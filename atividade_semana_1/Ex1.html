@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX1</title>
+</head>
+<body>
+    <script>
+        let num = prompt("Digite um valor.");
+        if(isNaN(num)){
+            alert("Digite um valor valido"); 
+        }
+        else{
+        let calc = num % 2;
+        switch(calc){
+            case 0:
+                alert("O valor informado é Par.");
+                break;
+            case 1:
+                alert("O valor informado é ímpar");
+                break;
+            default:
+                alert("Valor invalido.");
+            }
+        }
+    </script>
+</body>
+</html>
