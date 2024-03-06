@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade da semana 2</title>
+</head>
+<body>
+
+    <h1>Atividade Semana 2 - Arrays</h1>
+    <input type="text" id="valores">
+    <button type="submit" onclick="insert()">Inserir</button>
+    <ol id="lista">
+
+    </ol>
+
+    <script>
+        var lista = new Array();
+
+        function insert(){
+            let input = document.getElementById("valores").value;
+            lista.push(input);
+            
+            lista.sort();
+
+            document.getElementById("lista").innerHTML = "";
+            
+            for(var i = 0; i < lista.length; i++){
+                var l = document.createElement("li");
+                var c = document.createTextNode(lista[i]);
+                l.appendChild(c);
+                document.getElementById("lista").appendChild(l);
+            }        
+        }
+        
+        
+    </script>
+</body>
+</html>
