@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex3</title>
+</head>
+<body>
+    <script>
+        var palavra = prompt("digite uma palavra");
+        palavra = palavra.toLowerCase().replace(/\s/g, '');
+        var palavraInvertida = palavra.split('').reverse().join('');
+
+        if (palavra == palavraInvertida){
+            alert("A palavra digitada é um palíndromo");
+        }
+        else {
+            alert("A palavra digitada não é um palíndromo");
+        }
+
+
+    </script>
+</body>
+</html>
