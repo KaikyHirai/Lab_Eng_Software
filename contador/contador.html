@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <script>
+        window.onload = function() {
+
+            document.getElementById("div").setAttribute("style", "display: flex; flex-direction: column; justify-content: center; height: 100%; width: 50%; -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.21); -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.21); box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.21); margin: auto;");
+
+            var boxtopo = document.createElement("div");
+            boxtopo.setAttribute("id", "boxtopo");
+            boxtopo.setAttribute("style", "display: flex; flex-direction: row; justify-content: space-between;")
+            document.getElementById("div").appendChild(boxtopo);
+
+            var total = document.createElement("h2");
+            total.setAttribute("style", "margin-left: 43%;");
+            var texttotal = document.createTextNode("Total");
+            total.appendChild(texttotal);
+            document.getElementById("boxtopo").appendChild(total);
+
+            var iconreload = document.createElement("img")
+            iconreload.setAttribute("src", "icones/recarregar.png");
+            iconreload.setAttribute("style", "height: 30px; width: 30px; margin-top: 20px; margin-left: 20px;");
+            iconreload.setAttribute("id", "iconreload");
+            document.getElementById("boxtopo").appendChild(iconreload);
+            
+            var boxtotal = document.createElement("div");
+            boxtotal.setAttribute("id", "contadortotal");
+            boxtotal.setAttribute("style", "border: 1px solid black; border-radius: 5px; margin: auto; height: 30px; width: 70px; display: flex; justify-content: center;");
+            document.getElementById("div").appendChild(boxtotal);
+
+            //CRIA DIV DA GRID
+            var grid = document.createElement("div");
+            grid.setAttribute("id", "grid");
+            grid.setAttribute("style", "display: grid; grid-template-columns: 100px 100px; margin: auto; margin-top: 20px; margin-bottom: 20px;");
+            document.getElementById("div").appendChild(grid);
+
+            //IMG HOMEN
+            var imghomen = document.createElement("img");
+            imghomen.setAttribute("src", "icones/icons8-pessoa-80.png");
+            imghomen.setAttribute("style", "width: 90px;");
+            document.getElementById("grid").appendChild(imghomen);
+
+            //IMG MULHER
+            var imgmulher = document.createElement("img");
+            imgmulher.setAttribute("src", "icones/icons8-mulher-96.png");
+            imgmulher.setAttribute("style", "width: 95px;");
+            document.getElementById("grid").appendChild(imgmulher);
+
+            //Botões
+            var botoes1 = document.createElement("div");
+            botoes1.setAttribute("style", "display: flex; justify-content: space-between; height: 50px; width: 90px;");
+            botoes1.setAttribute("id", "botoes1");
+            document.getElementById("grid").appendChild(botoes1);
+
+            var botoes2 = document.createElement("div");
+            botoes2.setAttribute("style", "display: flex; justify-content: space-between; height: 50px; width: 90px;");
+            botoes2.setAttribute("id", "botoes2");
+            document.getElementById("grid").appendChild(botoes2);
+
+            var botaoadd = document.createElement("img");
+            var botaoadd2 = document.createElement("img");
+            botaoadd.setAttribute("src", "icones/icons8-adição-100.png");
+            botaoadd.setAttribute("style", "height: 30px; width: 30px;");
+            botaoadd.setAttribute("id", "botaoadd");
+            botaoadd2.setAttribute("src", "icones/icons8-adição-100.png");
+            botaoadd2.setAttribute("style", "height: 30px; width: 30px;");
+            botaoadd2.setAttribute("id", "botaoadd2");
+            document.getElementById("botoes1").appendChild(botaoadd);
+            document.getElementById("botoes2").appendChild(botaoadd2);
+
+            var botaosub = document.createElement("img");
+            var botaosub2 = document.createElement("img");
+            botaosub.setAttribute("src", "icones/icons8-subtração-100.png");
+            botaosub.setAttribute("style", "height: 30px; width: 30px;");
+            botaosub.setAttribute("id", "botaosub");
+            botaosub2.setAttribute("src", "icones/icons8-subtração-100.png");
+            botaosub2.setAttribute("style", "height: 30px; width: 30px;");
+            botaosub2.setAttribute("id", "botaosub2");
+            document.getElementById("botoes1").appendChild(botaosub);
+            document.getElementById("botoes2").appendChild(botaosub2);
+
+            var text1 = document.createElement("h3");
+            var text1content = document.createTextNode("Homens");
+            text1.appendChild(text1content);
+            text1.setAttribute("style", "padding-left: 10px;");
+            document.getElementById("grid").appendChild(text1);
+
+            var text2 = document.createElement("h3");
+            var text2content = document.createTextNode("Mulheres");
+            text2.appendChild(text2content);
+            text2.setAttribute("style", "padding-left: 12px;");
+            document.getElementById("grid").appendChild(text2);
+
+            var contadorhomen = document.createElement("div");
+            contadorhomen.setAttribute("style", "border: 1px solid black; border-radius: 5px; height: 25px; width: 50px; margin-left: 16px; display: flex; justify-content: center;");
+            contadorhomen.setAttribute("id", "contadorhomen");
+            document.getElementById("grid").appendChild(contadorhomen);
+
+            var contadormulher = document.createElement("div");
+            contadormulher.setAttribute("style", "border: 1px solid black; border-radius: 5px; height: 25px; width: 50px; margin-left: 22px; display: flex; justify-content: center;");
+            contadormulher.setAttribute("id", "contadormulher");
+            document.getElementById("grid").appendChild(contadormulher);
+
+            var numeroh = document.createElement("span");
+            var numerohcontent = document.createTextNode("0");
+            numeroh.appendChild(numerohcontent);
+            numeroh.setAttribute("id", "displayvalorh");
+            numeroh.setAttribute("style", "display: flex;");
+            document.getElementById("contadorhomen").appendChild(numeroh);
+
+            var numerom = document.createElement("span");
+            var numeromcontent = document.createTextNode("0");
+            numerom.appendChild(numeromcontent);
+            numerom.setAttribute("id", "displayvalorm");
+            numerom.setAttribute("style", "display: flex;");
+            document.getElementById("contadormulher").appendChild(numerom);
+
+            var totalcontador = document.createElement("span");
+            var totalcontadorcontent = document.createTextNode("0");
+            totalcontador.appendChild(totalcontadorcontent);
+            totalcontador.setAttribute("id", "displaytotal");
+            document.getElementById("contadortotal").appendChild(totalcontador);
+            
+            var contador = 0;
+            var contadorh = 0;
+            var contadorm = 0;
+            
+            const clicksomah = document.getElementById("botaoadd");
+            const displaysomah = document.getElementById("displayvalorh");
+            const clicksomam = document.getElementById("botaoadd2");
+            const displaysomam = document.getElementById("displayvalorm");
+
+            const clicksubh = document.getElementById("botaosub");
+            const displaysubh = document.getElementById("displayvalorh");
+            const clicksubm = document.getElementById("botaosub2");
+            const displaysubm = document.getElementById("displayvalorm");
+            const updatetotal = document.getElementById("displaytotal");
+            const clickreload = document.getElementById("iconreload");
+
+            clicksomah.onclick = function () {
+                contador++;
+                contadorh++;
+                displaysomah.innerHTML = contadorh;
+                updatetotal.innerHTML = contador;
+            }
+
+            clicksomam.onclick = function () {
+                contador++;
+                contadorm++;
+                displaysomam.innerHTML = contadorm;
+                updatetotal.innerHTML = contador;
+            }
+
+            clicksubh.onclick = function () {
+                contador--;
+                contadorh--;
+                displaysubh.innerHTML = contadorh;
+                updatetotal.innerHTML = contador;
+            };
+
+            clicksubm.onclick = function () {
+                contador--;
+                contadorm--;
+                displaysubm.innerHTML = contadorm;
+                updatetotal.innerHTML = contador;
+            }
+
+            clickreload.onclick = function () {
+                contador = 0;
+                contadorh = 0;
+                contadorm = 0;
+                displaysomah.innerHTML = contadorh;
+                displaysomam.innerHTML = contadorm;
+                updatetotal.innerHTML = contador;
+            };
+
+        }
+    </script>
+</head>
+<body>
+
+    <div id="div"></div>
+
+</body>
+</html>
