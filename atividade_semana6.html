@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atividade semana 6</title>
+    <style>
+      #calculadora {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid black;
+        width: 250px;
+        height: 350px;
+        align-items: center;
+        margin: auto;
+        border-radius: 30px;
+        background-color: black;
+      }
+
+      #caixaexibir {
+        display: flex;
+        justify-content: right;
+        align-items: last baseline;
+        width: 13vw;
+        height: 50px;
+      }
+
+      #caixaexibir,
+      span {
+        font-size: 40px;
+        color: white;
+      }
+
+      .botaocinza {
+        border: 1px solid black;
+        width: 40px;
+        height: 40px;
+        background-color: gray;
+        border-radius: 20px;
+      }
+
+      .botaocinza,
+      p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+      }
+
+      .botaolaranja {
+        border: 1px solid black;
+        width: 40px;
+        height: 40px;
+        background-color: orange;
+        border-radius: 20px;
+      }
+
+      .botaolaranja,
+      p {
+        display: flex;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+      }
+
+      .botaopreto {
+        border: 1px solid black;
+        width: 40px;
+        height: 40px;
+        background-color: rgb(53, 52, 52);
+        border-radius: 20px;
+      }
+
+      .botaopreto,
+      p {
+        display: flex;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+      }
+
+      .botaopreto0 {
+        border: 1px solid black;
+        width: 93px;
+        height: 40px;
+        background-color: rgb(53, 52, 52);
+        border-radius: 20px;
+      }
+
+      .botaopreto0,
+      p {
+        display: flex;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+      }
+
+      .botaopretoinf {
+        border: 1px solid black;
+        width: 40px;
+        height: 40px;
+        background-color: rgb(53, 52, 52);
+        margin-left: 53px;
+        border-radius: 20px;
+      }
+
+      .botaopretoinf,
+      p {
+        display: flex;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+      }
+
+      .botaolaranjainf {
+        border: 1px solid black;
+        width: 40px;
+        height: 40px;
+        background-color: orange;
+        margin-left: 53px;
+        border-radius: 20px;
+      }
+
+      .botaolaranjainf,
+      p {
+        display: flex;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+      }
+
+      .botaolaranjainf,
+      p {
+        display: flex;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+      }
+
+      #botoescentrais {
+        display: grid;
+        grid-template-columns: 40px 40px 40px 40px;
+        gap: 13px;
+        margin-top: 10px;
+      }
+    </style>
+
+    <script>
+      window.onload = function () {
+        //caixa de exibição
+        var caixaexibir = document.createElement("div");
+        var exibicao = document.createElement("span");
+        var contentexib = document.createTextNode("0");
+        exibicao.appendChild(contentexib);
+        caixaexibir.setAttribute("id", "caixaexibir");
+        exibicao.setAttribute("id", "resultado");
+        document.getElementById("calculadora").appendChild(caixaexibir);
+        document.getElementById("caixaexibir").appendChild(exibicao);
+
+        //botões centrais
+        var botoescentrais = document.createElement("div");
+        botoescentrais.setAttribute("id", "botoescentrais");
+        document.getElementById("calculadora").appendChild(botoescentrais);
+
+        //botões
+        //AC
+        var botaoAc = document.createElement("button");
+        botaoAc.setAttribute("class", "botaocinza");
+        botaoAc.setAttribute("id", "botaoAc");
+        var simbolAc = document.createElement("p");
+        var contentAc = document.createTextNode("AC");
+        botaoAc.appendChild(contentAc);
+        document.getElementById("botoescentrais").appendChild(botaoAc);
+
+        //+/-
+        var botaotroca = document.createElement("button");
+        botaotroca.setAttribute("class", "botaocinza");
+        botaotroca.setAttribute("id", "botaotroca");
+        var simboltroca = document.createElement("p");
+        var contenttroca = document.createTextNode("+/-");
+        botaotroca.appendChild(contenttroca);
+        document.getElementById("botoescentrais").appendChild(botaotroca);
+
+        //%
+        var botaopercent = document.createElement("button");
+        botaopercent.setAttribute("class", "botaocinza");
+        botaopercent.setAttribute("id", "botaopercent");
+        var simbolpercent = document.createElement("p");
+        var contentpercent = document.createTextNode("%");
+        botaopercent.appendChild(contentpercent);
+        document.getElementById("botoescentrais").appendChild(botaopercent);
+
+        //÷
+        var botaodivisi = document.createElement("button");
+        botaodivisi.setAttribute("class", "botaolaranja");
+        botaodivisi.setAttribute("id", "botaodivisi");
+        var simboldivi = document.createElement("p");
+        var contentdivi = document.createTextNode("÷");
+        botaodivisi.appendChild(contentdivi);
+        document.getElementById("botoescentrais").appendChild(botaodivisi);
+
+        //7
+        var botao7 = document.createElement("button");
+        botao7.setAttribute("class", "botaopreto");
+        botao7.setAttribute("id", "botao7");
+        var num7 = document.createElement("p");
+        var contentnum7 = document.createTextNode("7");
+        botao7.appendChild(contentnum7);
+        document.getElementById("botoescentrais").appendChild(botao7);
+
+        //8
+        var botao8 = document.createElement("button");
+        botao8.setAttribute("class", "botaopreto");
+        botao8.setAttribute("id", "botao8");
+        var num8 = document.createElement("p");
+        var contentnum8 = document.createTextNode("8");
+        botao8.appendChild(contentnum8);
+        document.getElementById("botoescentrais").appendChild(botao8);
+
+        //9
+        var botao9 = document.createElement("button");
+        botao9.setAttribute("class", "botaopreto");
+        botao9.setAttribute("id", "botao9");
+        var num9 = document.createElement("p");
+        var contentnum9 = document.createTextNode("9");
+        botao9.appendChild(contentnum9);
+        document.getElementById("botoescentrais").appendChild(botao9);
+
+        // X
+        var botaomulti = document.createElement("button");
+        botaomulti.setAttribute("class", "botaolaranja");
+        botaomulti.setAttribute("id", "botaomulti");
+        var simbolmulti = document.createElement("p");
+        var contentmulti = document.createTextNode("x");
+        botaomulti.appendChild(contentmulti);
+        document.getElementById("botoescentrais").appendChild(botaomulti);
+
+        //4
+        var botao4 = document.createElement("button");
+        botao4.setAttribute("class", "botaopreto");
+        botao4.setAttribute("id", "botao4");
+        var num4 = document.createElement("p");
+        var contentnum4 = document.createTextNode("4");
+        botao4.appendChild(contentnum4);
+        document.getElementById("botoescentrais").appendChild(botao4);
+
+        //5
+        var botao5 = document.createElement("button");
+        botao5.setAttribute("class", "botaopreto");
+        botao5.setAttribute("id", "botao5");
+        var num5 = document.createElement("p");
+        var contentnum5 = document.createTextNode("5");
+        botao5.appendChild(contentnum5);
+        document.getElementById("botoescentrais").appendChild(botao5);
+
+        //6
+        var botao6 = document.createElement("button");
+        botao6.setAttribute("class", "botaopreto");
+        botao6.setAttribute("id", "botao6");
+        var num6 = document.createElement("p");
+        var contentnum6 = document.createTextNode("6");
+        botao6.appendChild(contentnum6);
+        document.getElementById("botoescentrais").appendChild(botao6);
+
+        // -
+        var botaosub = document.createElement("button");
+        botaosub.setAttribute("class", "botaolaranja");
+        botaosub.setAttribute("id", "botaosub");
+        var simbolsub = document.createElement("p");
+        var contentsub = document.createTextNode("-");
+        botaosub.appendChild(contentsub);
+        document.getElementById("botoescentrais").appendChild(botaosub);
+
+        //1
+        var botao1 = document.createElement("button");
+        botao1.setAttribute("class", "botaopreto");
+        botao1.setAttribute("id", "botao1");
+        var num1 = document.createElement("p");
+        var contentnum1 = document.createTextNode("1");
+        botao1.appendChild(contentnum1);
+        document.getElementById("botoescentrais").appendChild(botao1);
+
+        //2
+        var botao2 = document.createElement("button");
+        botao2.setAttribute("class", "botaopreto");
+        botao2.setAttribute("id", "botao2");
+        var num2 = document.createElement("p");
+        var contentnum2 = document.createTextNode("2");
+        botao2.appendChild(contentnum2);
+        document.getElementById("botoescentrais").appendChild(botao2);
+
+        //3
+        var botao3 = document.createElement("button");
+        botao3.setAttribute("class", "botaopreto");
+        botao3.setAttribute("id", "botao3");
+        var num6 = document.createElement("p");
+        var contentnum3 = document.createTextNode("3");
+        botao3.appendChild(contentnum3);
+        document.getElementById("botoescentrais").appendChild(botao3);
+
+        // +
+        var botaosum = document.createElement("button");
+        botaosum.setAttribute("class", "botaolaranja");
+        botaosum.setAttribute("id", "botaosum");
+        var simbolsum = document.createElement("p");
+        var contentsum = document.createTextNode("+");
+        botaosum.appendChild(contentsum);
+        document.getElementById("botoescentrais").appendChild(botaosum);
+
+        var botao0 = document.createElement("button");
+        botao0.setAttribute("class", "botaopreto0");
+        botao0.setAttribute("id", "botao0");
+        var num0 = document.createElement("p");
+        var contentnum0 = document.createTextNode("0");
+        botao0.appendChild(contentnum0);
+        document.getElementById("botoescentrais").appendChild(botao0);
+
+        var botaovirg = document.createElement("button");
+        botaovirg.setAttribute("class", "botaopretoinf");
+        botaovirg.setAttribute("id", "botaovirg");
+        var virg = document.createElement("p");
+        var contentvirg = document.createTextNode(",");
+        botaovirg.appendChild(contentvirg);
+        document.getElementById("botoescentrais").appendChild(botaovirg);
+
+        var botaoigual = document.createElement("button");
+        botaoigual.setAttribute("class", "botaolaranjainf");
+        botaoigual.setAttribute("id", "botaoigual");
+        var igual = document.createElement("p");
+        var contentigual = document.createTextNode("=");
+        botaoigual.appendChild(contentigual);
+        document.getElementById("botoescentrais").appendChild(botaoigual);
+
+        const numtela = document.getElementById("resultado");
+
+        // Event Listeners para os botões de números
+        botao0.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "0";
+          } else {
+            exibicao.innerHTML += "0";
+          }
+        };
+
+        botao1.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "1";
+          } else {
+            exibicao.innerHTML += "1";
+          }
+        };
+
+        botao2.onclick = function () {
+            if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "2";
+          } else {
+            exibicao.innerHTML += "2";
+          }
+
+        };
+
+        botao3.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "3";
+          } else {
+            exibicao.innerHTML += "3";
+          }
+        };
+
+        botao4.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "4";
+          } else {
+            exibicao.innerHTML += "4";
+          }
+        };
+
+        botao5.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "5";
+          } else {
+            exibicao.innerHTML += "5";
+          }
+        };
+
+        botao6.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "6";
+          } else {
+            exibicao.innerHTML += "6";
+          }
+        };
+
+        botao7.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "7";
+          } else {
+            exibicao.innerHTML += "7";
+          }
+        };
+
+        botao8.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "8";
+          } else {
+            exibicao.innerHTML += "8";
+          }
+        };
+
+        botao9.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "9";
+          } else {
+            exibicao.innerHTML += "9";
+          }
+        };
+
+        botaosum.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "0";
+          } else {
+            exibicao.innerHTML += "+";
+          }
+        }
+
+        botaosub.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "0";
+          } else {
+            exibicao.innerHTML += "-";
+          }
+        }
+
+        botaomulti.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "0";
+          } else {
+            exibicao.innerHTML += "*";
+          }
+        }
+
+        botaodivisi.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "0";
+          } else {
+            exibicao.innerHTML += "/";
+          }
+        }
+
+        botaoigual.onclick = function () {
+            exibicao.innerHTML = eval(exibicao.innerHTML);
+        }
+
+        botaoAc.onclick = function () {
+            numtela.innerHTML = "0";
+        }
+
+        botaopercent.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "0";
+          } else {
+            exibicao.innerHTML /= "100";
+          }
+        }
+
+        botaotroca.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "0";
+          } else {
+            exibicao.innerHTML *= "-1";
+          }
+        }
+
+        botaovirg.onclick = function () {
+          if (numtela.innerHTML === "0") {
+            exibicao.innerHTML = "0";
+          } else {
+            exibicao.innerHTML += ".";
+          }
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <div id="calculadora"></div>
+  </body>
+</html>
